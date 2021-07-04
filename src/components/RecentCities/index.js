@@ -1,14 +1,14 @@
-const RecentCities = () => {
+const RecentCities = (props) => {
+  const renderLi = () => {
+    return props.recentCities.map((city) => {
+      return <li className="list-group-item">{city}</li>;
+    });
+  };
+
   return (
     <div className="col-sm-12 col-md-3">
       <div>
-        <ul className="list-group p-3 text-center">
-          <li className="list-group-item">Cras justo odio</li>
-          <li className="list-group-item">Dapibus ac facilisis in</li>
-          <li className="list-group-item">Morbi leo risus</li>
-          <li className="list-group-item">Porta ac consectetur ac</li>
-          <li className="list-group-item">Vestibulum at eros</li>
-        </ul>
+        <ul className="list-group p-3 text-center">{renderLi()}</ul>
       </div>
     </div>
   );

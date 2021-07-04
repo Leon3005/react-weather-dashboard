@@ -9,6 +9,8 @@ import fetchData from "./utils/fetchData";
 
 import "./App.css";
 
+let recentCities = [];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -49,6 +51,10 @@ class App extends Component {
     event.preventDefault();
 
     await this.getWeatherData();
+
+    recentCities.push(this.state.cityName);
+
+    localStorage.setItem("recentCities", JSON.stringify(recentCities));
   };
 
   onChange = (event) => {
@@ -57,7 +63,7 @@ class App extends Component {
     });
   };
 
-  renderCurrentCard() {
+  renderWeatherCard() {
     const { data, error } = this.state;
 
     if (data && !error) {
@@ -67,19 +73,29 @@ class App extends Component {
     }
   }
 
+  renderRecentCities() {
+    const recentCities = JSON.parse(localStorage.getItem("recentCities"));
+
+    if (recentCities) {
+      return <RecentCities recentCities={recentCities} />;
+    } else {
+      return <RecentCities recentCities={["Waiting..."]} />;
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <Header title="Weather Dashboard" />
         <div className="row main g-0 ">
-          <RecentCities />
+          {this.renderRecentCities()}
           <div className="col-sm-12 col-md-9 pt-2 px-4">
             <SearchBar
               placeholder="Please enter a city..."
               onSubmit={this.onSubmit}
               onChange={this.onChange}
             />
-            {this.renderCurrentCard()}
+            {this.renderWeatherCard()}
           </div>
         </div>
       </div>
