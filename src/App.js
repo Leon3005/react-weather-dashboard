@@ -19,24 +19,34 @@ function App() {
             </ul>
           </div>
         </div>
-        <div className="col-sm-12 col-md-9">
-          <div className="search p-2 ">
+        <div className="col-sm-12 col-md-9 pt-2 px-4">
+          <div className="search">
             <form>
               <div className="row h-100">
-                <div className="col-sm-12 col-md-10 pt-2 px-4">
+                <div className="col-sm-12 col-md-10">
                   <input
                     type="text"
                     className="form-control"
                     id="search-city"
                   />
                 </div>
-                <div className="col-sm-12 col-md-2 pt-2">
+                <div className="col-sm-12 col-md-2 text-center">
                   <button type="submit" className="btn btn-primary">
                     Search
                   </button>
                 </div>
               </div>
             </form>
+          </div>
+          <div className="pt-4">
+            <div class="card col-sm-12 col-md-10">
+              <div class="card-header">City Name</div>
+              <div class="card-body">
+                <p className="card-text">Temperature:</p>
+                <p className="card-text">Humidity: </p>
+                <p className="card-text">Wind Speed: </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
