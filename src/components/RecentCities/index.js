@@ -2,7 +2,7 @@ const RecentCities = (props) => {
   const renderLi = () => {
     return props.recentCities.map((city) => {
       return (
-        <li className="list-group-item" onClick={props.onClick}>
+        <li className="list-group-item recentCity" onClick={props.onClick}>
           {city}
         </li>
       );

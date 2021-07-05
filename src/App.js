@@ -57,7 +57,7 @@ class App extends Component {
     localStorage.setItem("recentCities", JSON.stringify(recentCities));
 
     this.setState({
-      recentCities,
+      recentCities: localStorage.getItem("recentCities"),
     });
   };
 
@@ -103,7 +103,7 @@ class App extends Component {
         <Header title="Weather Dashboard" />
         <div className="row main g-0 ">
           {this.renderRecentCities()}
-          <div className="col-sm-12 col-md-9 pt-2 px-4">
+          <div className="col-sm-12 col-md-9 pt-3 px-4">
             <SearchBar
               placeholder="Please enter a city..."
               onSubmit={this.onSubmit}
