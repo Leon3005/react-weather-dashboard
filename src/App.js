@@ -55,6 +55,10 @@ class App extends Component {
     recentCities.push(this.state.cityName);
 
     localStorage.setItem("recentCities", JSON.stringify(recentCities));
+
+    this.setState({
+      recentCities,
+    });
   };
 
   onChange = (event) => {
@@ -73,15 +77,25 @@ class App extends Component {
     }
   }
 
-  renderRecentCities() {
-    const recentCities = JSON.parse(localStorage.getItem("recentCities"));
+  onClick = async (event) => {
+    await this.setState({
+      cityName: event.target.innerText,
+    });
 
-    if (recentCities) {
-      return <RecentCities recentCities={recentCities} />;
+    await this.getWeatherData();
+  };
+
+  renderRecentCities = () => {
+    const parseRecentCities = JSON.parse(localStorage.getItem("recentCities"));
+
+    if (parseRecentCities) {
+      return (
+        <RecentCities recentCities={parseRecentCities} onClick={this.onClick} />
+      );
     } else {
       return <RecentCities recentCities={["Waiting..."]} />;
     }
-  }
+  };
 
   render() {
     return (

@@ -8,7 +8,9 @@ const RecentCities = (props) => {
   return (
     <div className="col-sm-12 col-md-3">
       <div>
-        <ul className="list-group p-3 text-center">{renderLi()}</ul>
+        <ul className="list-group p-3 text-center" onClick={props.onClick}>
+          {renderLi()}
+        </ul>
       </div>
     </div>
   );
