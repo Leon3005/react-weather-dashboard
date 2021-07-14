@@ -32,6 +32,18 @@ class App extends Component {
       params
     );
 
+    const oneCallParams = {
+      lat: data.coord.lat,
+      lon: data.coord.lon,
+      appid: "60b4fb66103f9e3c6f93920a7d7f1377",
+      units: "metric",
+    };
+
+    const { data: oneCallData, error: oneCallError } = await fetchData(
+      "https://api.openweathermap.org/data/2.5/onecall",
+      oneCallParams
+    );
+
     if (data) {
       this.setState({
         data,
@@ -42,6 +54,20 @@ class App extends Component {
     if (error) {
       this.setState({
         error,
+        data: null,
+      });
+    }
+
+    if (oneCallData) {
+      this.setState({
+        oneCallData,
+        error: null,
+      });
+    }
+
+    if (oneCallError) {
+      this.setState({
+        oneCallError,
         data: null,
       });
     }

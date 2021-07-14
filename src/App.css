@@ -7,7 +7,8 @@
 }
 
 body {
-  background-color: var(--bright-yellow-crayola);
+  background-color: #fad961;
+  background-image: linear-gradient(90deg, #fad961 0%, #f76b1c 100%);
 }
 
 .header {
@@ -20,9 +21,29 @@ body {
 }
 
 .weatherCard {
-  background-color: var(--dark-red);
+  background-color: rgb(255, 253, 208, 0.5);
 }
 
 .recentCity {
-  background-color: var(--rust);
+  background-image: linear-gradient(
+    to right,
+    #f09819 0%,
+    #edde5d 51%,
+    #f09819 100%
+  );
+  margin-bottom: 2rem;
+}
+.recentCity {
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+
+.recentCity:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
