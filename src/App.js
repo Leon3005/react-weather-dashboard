@@ -4,6 +4,7 @@ import RecentCities from "./components/RecentCities";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import Header from "./components/Header";
+import ForecastCard from "./components/ForecastCard";
 
 import fetchData from "./utils/fetchData";
 
@@ -103,6 +104,18 @@ class App extends Component {
     }
   }
 
+  renderFiveDayForecast() {
+    const { oneCallData, oneCallError } = this.state;
+
+    if (oneCallData && !oneCallError) {
+      return oneCallData.daily.map((day) => {
+        return <ForecastCard data={day} />;
+      });
+    } else if (!oneCallData && oneCallError) {
+      return <h1>Error!</h1>;
+    }
+  }
+
   onClick = async (event) => {
     await this.setState({
       cityName: event.target.innerText,
@@ -136,6 +149,7 @@ class App extends Component {
               onChange={this.onChange}
             />
             {this.renderWeatherCard()}
+            <div>{this.renderFiveDayForecast()}</div>
           </div>
         </div>
       </div>
