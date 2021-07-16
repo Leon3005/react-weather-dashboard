@@ -12,7 +12,7 @@ const SearchBar = (props) => {
             />
           </div>
           <div className="col-sm-12 col-md-2 text-center">
-            <button type="submit" className="btn btn-danger">
+            <button type="submit" className="btn">
               Search
             </button>
           </div>

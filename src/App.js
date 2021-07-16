@@ -33,42 +33,36 @@ class App extends Component {
       params
     );
 
-    const oneCallParams = {
-      lat: data.coord.lat,
-      lon: data.coord.lon,
-      appid: "60b4fb66103f9e3c6f93920a7d7f1377",
-      units: "metric",
-    };
-
-    const { data: oneCallData, error: oneCallError } = await fetchData(
-      "https://api.openweathermap.org/data/2.5/onecall",
-      oneCallParams
-    );
-
     if (data) {
       this.setState({
         data,
         error: null,
+        oneCallParams: {
+          lat: data.coord.lat,
+          lon: data.coord.lon,
+          appid: "60b4fb66103f9e3c6f93920a7d7f1377",
+          units: "metric",
+        },
       });
     }
 
-    if (error) {
-      this.setState({
-        error,
-        data: null,
-      });
-    }
+    const { data: oneCallData, error: oneCallError } = await fetchData(
+      "https://api.openweathermap.org/data/2.5/onecall",
+      this.state.oneCallParams
+    );
 
     if (oneCallData) {
       this.setState({
         oneCallData,
         error: null,
+        oneCallError: null,
       });
     }
 
-    if (oneCallError) {
+    if (error || oneCallError) {
       this.setState({
         oneCallError,
+        error,
         data: null,
       });
     }
@@ -100,7 +94,7 @@ class App extends Component {
     if (data && !error) {
       return <WeatherCard data={data} />;
     } else if (!data && error) {
-      return <h1>Error!</h1>;
+      return <h1>Error finding city!</h1>;
     }
   }
 
@@ -108,11 +102,13 @@ class App extends Component {
     const { oneCallData, oneCallError } = this.state;
 
     if (oneCallData && !oneCallError) {
-      return oneCallData.daily.map((day) => {
-        return <ForecastCard data={day} />;
-      });
+      return oneCallData.daily
+        .map((day) => {
+          return <ForecastCard data={day} />;
+        })
+        .slice(0, 5);
     } else if (!oneCallData && oneCallError) {
-      return <h1>Error!</h1>;
+      return <h1>Error finding forecast!</h1>;
     }
   }
 
