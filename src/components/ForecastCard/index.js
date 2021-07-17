@@ -1,5 +1,5 @@
 const ForecastCard = (props) => {
-  const iconUrl = `http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
+  const iconUrl = `https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
 
   const date = new Date(props.data.dt * 1000).toLocaleDateString("en-gb");
 

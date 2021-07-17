@@ -1,5 +1,5 @@
 const WeatherCard = (props) => {
-  const iconUrl = `http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
+  const iconUrl = `https://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
 
   return (
     <div className="pt-4">

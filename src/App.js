@@ -29,7 +29,7 @@ class App extends Component {
     };
 
     const { data, error } = await fetchData(
-      "http://api.openweathermap.org/data/2.5/weather",
+      "https://api.openweathermap.org/data/2.5/weather",
       params
     );
 
