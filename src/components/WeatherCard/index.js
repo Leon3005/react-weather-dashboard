@@ -8,8 +8,8 @@ const WeatherCard = (props) => {
         <div className="card-body">
           <img src={iconUrl} />
           <p className="card-text">Temperature: {props.data.main.temp} °C </p>
-          <p className="card-text">Humidity: {props.data.main.humidity}</p>
-          <p className="card-text">Wind Speed: {props.data.wind.speed}</p>
+          <p className="card-text">Humidity: {props.data.main.humidity}%</p>
+          <p className="card-text">Wind Speed: {props.data.wind.speed} m/h</p>
         </div>
       </div>
     </div>

@@ -138,7 +138,7 @@ class App extends Component {
         <Header title="Weather Dashboard" />
         <div className="row main g-0 ">
           {this.renderRecentCities()}
-          <div className="col-sm-12 col-md-9 pt-3 px-4">
+          <div className="col-sm-12 col-md-9 pt-3 px-4 text-center">
             <SearchBar
               placeholder="Please enter a city..."
               onSubmit={this.onSubmit}
