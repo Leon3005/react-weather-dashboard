@@ -1,5 +1,9 @@
 # React Weather Dashboard
 
+## Deployed Heroku Link
+
+[Weather Dashboard](https://lw-weather-dashboard.herokuapp.com/)
+
 ## Description
 
 For this project I used React, Bootstrap, and the OpenWeatherMap third-party API.
@@ -9,6 +13,7 @@ I used axios to connect to OpenWeatherMap's API based on the user's searched cit
 ## Table of Contents
 
 - [React Weather Dashboard](#react-weather-dashboard)
+  - [Deployed Heroku Link](#deployed-heroku-link)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Screenshots](#screenshots)
