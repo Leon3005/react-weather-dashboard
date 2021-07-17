@@ -6,6 +6,8 @@
 
 ## Description
 
+The Weather Dashboard allows users to search for a city and view the current weather along with a five day forecast.
+
 For this project I used React, Bootstrap, and the OpenWeatherMap third-party API.
 
 I used axios to connect to OpenWeatherMap's API based on the user's searched city and from here I was able to retrieve the weather icon, temperature, humidity, and wind speeds. I also sent a request to another endpoint that they have to retrieve the forecast for the next 5 days. The searched city is then stored to local storage using state for future use.
