@@ -145,7 +145,9 @@ class App extends Component {
               onChange={this.onChange}
             />
             {this.renderWeatherCard()}
-            <div>{this.renderFiveDayForecast()}</div>
+            <div className="row main g-0 forecast">
+              {this.renderFiveDayForecast()}
+            </div>
           </div>
         </div>
       </div>
