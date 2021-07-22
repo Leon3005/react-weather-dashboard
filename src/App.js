@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import RecentCities from "./components/RecentCities";
 import SearchBar from "./components/SearchBar";
@@ -92,7 +93,7 @@ class App extends Component {
     const { data, error } = this.state;
 
     if (data && !error) {
-      return <WeatherCard data={data} />;
+      return <WeatherCard data={data} key={uuidv4()} />;
     } else if (!data && error) {
       return <h1>Error finding city!</h1>;
     }
@@ -104,7 +105,7 @@ class App extends Component {
     if (oneCallData && !oneCallError) {
       return oneCallData.daily
         .map((day) => {
-          return <ForecastCard data={day} />;
+          return <ForecastCard data={day} key={uuidv4()} />;
         })
         .slice(0, 5);
     } else if (!oneCallData && oneCallError) {
@@ -125,10 +126,14 @@ class App extends Component {
 
     if (parseRecentCities) {
       return (
-        <RecentCities recentCities={parseRecentCities} onClick={this.onClick} />
+        <RecentCities
+          recentCities={parseRecentCities}
+          onClick={this.onClick}
+          key={uuidv4()}
+        />
       );
     } else {
-      return <RecentCities recentCities={["Waiting..."]} />;
+      return <RecentCities recentCities={["Waiting..."]} key={uuidv4()} />;
     }
   };
 
